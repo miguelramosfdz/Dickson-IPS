@@ -14,10 +14,14 @@ __email__ = 'noah@ingham.com.au'
 
 if __name__=='__main__':
     webcam = cv2.VideoCapture('demo.mp4')
+    rval, im = webcam.read()
+    sample = cv2.resize(im, (int(im.shape[1]*0.6), int(im.shape[0]*0.6)))
+    save = cv2.VideoWriter('demoOut.avi', cv2.cv.CV_FOURCC('I', '4', '2', '0'), 15, (sample.shape[1], sample.shape[0]), True)
     while True:
         # Restart the video if we've reached the end
         if webcam.get(1)==webcam.get(7): webcam.set(0, 0)
         rval, im = webcam.read()
+        if not rval: break
 
         # Resize, flip, blur (for better detection) and convert colour space
         frame = cv2.resize(im, (int(im.shape[1]*0.6), int(im.shape[0]*0.6)))
@@ -26,7 +30,7 @@ if __name__=='__main__':
         img=cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
         # Split the colours (we are only interested in white) and detect the contours
-        separated=cv2.inRange(img,np.array(colourValues.whited,np.uint8),np.array(colourValues.whiteu,np.uint8))
+        separated=cv2.inRange(img,colourValues.lowerRange['white'],colourValues.upperRange['white'])
         contours,hierarchy=cv2.findContours(separated,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
         # Find the biggest contour
@@ -69,6 +73,7 @@ if __name__=='__main__':
 
         # Show the image and wait 0.04 seconds to continue the loop. If the Esc key is pressed, quit.
         cv2.imshow('image',frame)
+        save.write(frame)
         key=cv2.waitKey(40)
         if key==27:
             break

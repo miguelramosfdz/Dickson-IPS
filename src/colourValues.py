@@ -1,12 +1,17 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-#Blue
-#up=[360,255,255]
-#down=[1,0,0]
+"""colourValues.py: Stores the upper and lower range values for the colours to be detected."""
 
-#Red
-up=[180,255,255]
-down=[130,100,100]
+import numpy as np
 
-whiteu=[60,30,255]
-whited=[0,0,100]
+__author__ = 'Noah Ingham'
+__email__ = 'noah@ingham.com.au'
 
+upperRange={'white': [60,30,255],   'blue': [140,255,255],  'red': [180,255,255] }
+lowerRange={'white': [0,0,100],     'blue': [100,100,100],        'red': [130,100,100] }
+
+rectangleC={'white': [0,0,0],     'blue': [180,127,255],        'red': [0,255,255] }
+
+upperRange = {k: np.array(v) for k, v in upperRange.items()}
+lowerRange = {k: np.array(v) for k, v in lowerRange.items()}
