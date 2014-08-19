@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""colourRec.py: Is able to detect differnt coloured boxes. Having numerous colours may slow it down.."""
+"""colourMean.py: Still a work in progress - will be able to remove floor colour and detect any contrasting object. Not used by any other files yet."""
 
 import cv2
 import numpy as np
@@ -36,6 +36,6 @@ def mouse_callback(event,x,y,flags,param):
        global new
        new = [x,y]
 
-cv2.namedWindow('image',cv2.WINDOW_NORMAL) # Can be resized
-cv2.setMouseCallback('image',mouse_callback) #Mouse callback
+#cv2.namedWindow('image',cv2.WINDOW_NORMAL) # Can be resized
+#cv2.setMouseCallback('image',mouse_callback) #Mouse callback
 

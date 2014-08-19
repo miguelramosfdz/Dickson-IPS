@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""colourValues.py: Stores the upper and lower range values for the colours to be detected."""
+""" colourValues.py: Stores the upper and lower range values for the colours to be detected. Used by: colourRec.py """
 
 import numpy as np
 

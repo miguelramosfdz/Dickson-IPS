@@ -16,7 +16,8 @@ if __name__=='__main__':
     webcam = cv2.VideoCapture('demo.mp4')
     rval, im = webcam.read()
     sample = cv2.resize(im, (int(im.shape[1]*0.6), int(im.shape[0]*0.6)))
-    save = cv2.VideoWriter('demoOut.avi', cv2.cv.CV_FOURCC('I', '4', '2', '0'), 15, (sample.shape[1], sample.shape[0]), True)
+    #save = cv2.VideoWriter('demoOut.avi', cv2.cv.CV_FOURCC('I', '4', '2', '0'), 15, (sample.shape[1], sample.shape[0]), True)
+    save = cv2.VideoWriter('video.mp4', cv2.cv.CV_FOURCC('x', '2', '6','4'), 15, (sample.shape[1],sample.shape[0]), True)
     while True:
         # Restart the video if we've reached the end
         if webcam.get(1)==webcam.get(7): webcam.set(0, 0)
