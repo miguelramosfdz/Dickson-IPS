@@ -1,40 +1,26 @@
-import socket, select
-import json
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-import copy, time
-def getTerminalSize():
-    import os
-    env = os.environ
-    def ioctl_GWINSZ(fd):
-        try:
-            import fcntl, termios, struct, os
-            cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,'1234'))
-        except:
-            return
-        return cr
-    cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
-    if not cr:
-        try:
-            fd = os.open(os.ctermid(), os.O_RDONLY)
-            cr = ioctl_GWINSZ(fd)
-            os.close(fd)
-        except:
-            pass
-    if not cr:
-        cr = (env.get('LINES', 25), env.get('COLUMNS', 80))
-    return int(cr[1]), int(cr[0])-1
-(width, height) = getTerminalSize()
+""" Main Server file """
+
+import socket
+import select
+import json
+import libnmea
+import libxbee
+
+__author__ = 'Noah Ingham'
+__email__ = 'noah@ingham.com.au'
+
 colors = ['\033[95m','\033[94m','\033[92m','\033[93m','\033[91m']
 ENDC = '\033[0m'
 
-start = []
-counter = -1
-for y in range(height):
-    start.append([])
-    for x in range(width):
-        start[-1].append(" ")
-start[2][3]="a"
-print(colors[0])
+def sendData(xBee, coord):
+    #lat,lon=coord
+    lat=139.1244
+    lon=35.3075
+    gprmc=libnmea.gprmc(lat,lon)
+    xBee.write( gprmc )
 
 if __name__ == "__main__":
     # List to keep track of socket descriptors
@@ -51,20 +37,20 @@ if __name__ == "__main__":
     # Add server socket to the list of readable connections
     CONNECTION_LIST.append(server_socket)
 
-    while 1:
+    # xBee information
+    xPort="/dev/tty.usbserial-A600dJm8"
+    xBaud=9600
+    xFound=0
+    try:
+        xBee = libxbee.connect(xPort,xBaud)
+        print("XBee %sfound%s at %s%s%s."%(colors[2],ENDC,colors[0],xPort,ENDC) )
+        xFound=1
+    except:
+        print("XBee %snot found%s."%(colors[4],ENDC) )
 
-        time.sleep(0.05)
-        #print(chr(27) + "[0;0f")
-        counter += 1
-        start[7][7]="c"
-        printer = copy.deepcopy(start)
-        for x in range(len(str(counter))):
-           printer[0][-x-1] = str(counter)[-x-1]
-        for y in printer:
-            for x in y:
-                print(x,end="")
-                1
-            print('')
+    print("Starting IPS server on port %s%s%s."%(colors[0], PORT, ENDC) )
+
+    while 1:
 
         # Get the list sockets which are ready to be read through select
         read_sockets,write_sockets,error_sockets = select.select(CONNECTION_LIST,[],[])
@@ -73,7 +59,7 @@ if __name__ == "__main__":
                 # Handle the case in which there is a new connection recieved through server_socket
                 sockfd, addr = server_socket.accept()
                 CONNECTION_LIST.append(sockfd)
-                print("Client (%s, %s) connected" % addr)
+                print("Client %s(%s, %s)%s connected" %(colors[2],addr,ENDC))
             
             #Some incoming message from a client
             else:
@@ -84,10 +70,10 @@ if __name__ == "__main__":
                     data = sock.recv(RECV_BUFFER)
                     if data:
                         try:
-                            data=eval(data)
+                            data=eval(data) ######### URGENT. Remove eval. Replace with JSON. #####
                             print(data)
-                            #print (str(data["ID"])+": "+str(data["det"]))
-                            #start[1][data["ID"]]=len(data["det"])
+                            if xFound:
+                                sendData(xBee, [0,0] )
                         except:
                             print(":O", data)
                             1

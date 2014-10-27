@@ -47,6 +47,7 @@ def gprmc(lat,lon,latH="N",lonH="E"): # Assuming the Land of Oz
 
     return gprmcFormat
 
-lat=139.1244
-lon=35.3075
-print(gprmc(lat,lon))
+if __name__=="__main__":
+    lat=139.1244
+    lon=35.3075
+    print(gprmc(lat,lon))

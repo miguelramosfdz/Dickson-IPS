@@ -9,10 +9,14 @@ __author__ = 'Noah Ingham'
 __email__ = 'noah@ingham.com.au'
 
 # Connect to Xbee
-self.ser = serial.Serial(20, 9600, timeout=100)
+def connect(port, baud):
+    return serial.Serial(port, baud)
 
-# Send data (a string)
-self.ser.write(packet)
+if __name__=="__main__":
+    self.ser = serial.Serial(20, 9600)
 
-# Read data
-self.data += self.ser.read()
+    # Send data (a string)
+    self.ser.write("$*0")
+
+    # Read data
+    self.data += self.ser.read()
