@@ -24,7 +24,7 @@ def gprmc(lat,lon): # Assuming the Land of Oz
 
     today=datetime.utcnow()
 
-    time= today.strftime("%H%M%S") 
+    time= today.strftime("%H%M%S.%f").rstrip('0')
     warning="A" # "A" for good, "V" for bad. I'm an optimist.
     latD=dd2dm(lat)
     if lat<0: latH="S"
@@ -32,16 +32,14 @@ def gprmc(lat,lon): # Assuming the Land of Oz
     lonD=dd2dm(lon)
     if lon<0: lonH="W"
     else: lonH="E"
-    speed="000.5" # ?
-    course="054.7" # ?
+    speed="0" # ?
+    course="" # ?
     dateUTC=today.strftime("%d%m%y") # Using UTC time.
-    #latV=lat if latH=="N" else -lat # Combine hemisphere and latitude
-    #lonV=lon if lonH=="N" else -lon # Combine hemisphere and longitude
     mag=geomag.declination(lat,lon,time=today.date() ) # See geomag library
     magD="E" if mag<0 else "W" # West or East declination?
     mag=abs(mag) # Data stored in magD 
 
-    gprmcData="GPRMC,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s"%(
+    gprmcData="GPRMC,%s,%s,%s,%s,%s,%s,%s,%s,%s,%f.00,%s"%(
             time,
             warning,
             latD,
@@ -56,11 +54,11 @@ def gprmc(lat,lon): # Assuming the Land of Oz
             )
 
     check=checksum(gprmcData)
-    gprmcFormat="$%s*%X"%(gprmcData,check)
+    gprmcFormat="$%s*%X\r\n"%(gprmcData,check)
 
     return gprmcFormat
 
 if __name__=="__main__":
     lat=-35.249391
     lon=149.153513
-    print(gprmc(lat,lon))
+    psrint(gprmc(lat,lon))
