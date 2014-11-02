@@ -58,6 +58,12 @@ def gprmc(lat,lon): # Assuming the Land of Oz
 
     return gprmcFormat
 
+# Covert meter coordinates, with origin (0,0), to latitude and longitude.
+def metric2ll(x,y):
+    base=[0.0,0.0]
+    ll = [ base[0]+x/(30.0+13.0/15.0) , base[1]+y/(30.0+13.0/15.0) ]
+    return latlong
+
 if __name__=="__main__":
     lat=-35.249391
     lon=149.153513

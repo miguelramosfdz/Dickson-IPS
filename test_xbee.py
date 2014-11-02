@@ -47,14 +47,11 @@ def sendData(xBee, i):
 if __name__ == "__main__":
 
     # xBee information
-    xPort=config.xPort
-    xBaud=38400
-    xBee=0
-    try:
-        xBee = libxbee.connect(xPort,xBaud)
-        print("XBee %sfound%s at %s%s%s."%(colors[2],ENDC,colors[0],xPort,ENDC) )
-    except:
-        print("XBee %snot found%s at %s."%(colors[4],ENDC,xPort) )
+    xBee = libxbee.connect(config.xBaud,port=config.xPort)
+    if xBee:
+        print("XBee %sdetected%s."%(colors[2],ENDC) )
+    else:
+        print("XBee %snot found%s."%(colors[4],ENDC) )
 
     print("Starting %sTEST%s protocol."%(colors[2], ENDC) )
 

@@ -4,19 +4,41 @@
 """ libxbee """
 
 import serial
+import serial.tools.list_ports
 
 __author__ = 'Noah Ingham'
 __email__ = 'noah@ingham.com.au'
 
 # Connect to Xbee
-def connect(port, baud):
-    return serial.Serial(port, baud)
+def connect(baud,port="",verbose=1):
 
-if __name__=="__main__":
-    self.ser = serial.Serial(20, 9600)
+    # Automatic Port Detection
+    if port=="":
+        # The XBee vid:pid == 403:6001
+        # list_ports.grep returns a generator
+        xBees = serial.tools.list_ports.grep("403:6001")
+        for port in xBees:
+            try:
+                xBee=serial.Serial(port[0],baud)
+                if verbose:
+                    print( "XBee found at %s ."%port[0] )
+            except:
+                0
+            return xBee
 
-    # Send data (a string)
-    self.ser.write("$*0")
+    # Manual Port Detection + No XBees detected
+    try:
+        xBee=serial.Serial(port,baud)
+    except:
+        # No XBees where found
+        xBee=""
 
-    # Read data
-    self.data += self.ser.read()
+    return xBee
+
+"""
+# Send data (a string)
+self.ser.write("$*0")
+
+# Read data
+self.data += self.ser.read()
+"""

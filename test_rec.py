@@ -8,6 +8,7 @@ import select
 import json
 import libnmea
 import libxbee
+import config
 
 __author__ = 'Noah Ingham'
 __email__ = 'noah@ingham.com.au'
@@ -24,24 +25,27 @@ def sendData(xBee, coord):
     lat=139.1244
     lon=35.3075
     gprmc=libnmea.gprmc(lat,lon)
+    print(gprmc)
     xBee.write( gprmc )
 
 if __name__ == "__main__":
 
     # xBee information
-    xPort="/dev/tty.usbserial-A600dJm8"
-    xBaud=9600
+    #xPort=config.xPort
+    xPort="/dev/tty.usbserial-A100RYLY"
+    xBaud=38400
     xBee=0
     try:
         xBee = libxbee.connect(xPort,xBaud)
         print("XBee %sfound%s at %s%s%s."%(colors[2],ENDC,colors[0],xPort,ENDC) )
     except:
-        print("XBee %snot found%s."%(colors[4],ENDC) )
+        print("XBee %snot found%s at %s."%(colors[4],ENDC,xPort) )
 
     print("Starting %sTEST%s protocol."%(colors[2], ENDC) )
 
+    data=""
+
     while 1:
-        lat=-35.249391
-        lon=149.153513
-        if xBee:
-            sendData(xBee, [lat,lon])
+        data = xBee.read()
+        print(data.encode('hex'))
+        #print(data)
