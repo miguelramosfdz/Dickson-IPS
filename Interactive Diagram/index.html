@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+
+        <!-- ############################################################################################# -->
+        <!-- Interactive IPS Diagram, made by Noah Ingham. zoomooz jQuery library used for zooming effect. -->
+        <!-- Information about each item is in js/info.js -->
+
+		<title>IPS</title>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/jquery.zoomooz.js"></script>
+		<script type="text/javascript" src="js/info.js"></script>
+		<script type="text/javascript" src="js/levels.js"></script>
+	</head>
+	<body>
+		<h1>Indoor Positioning System</h1>
+        <div id="center">
+            <div class="zoomViewport">
+                <div id="container" class="zoomContainer">
+
+                    <div style="left:30px; top:30px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:550px; top:55px; " data-closeclick="true" class="switch zoomTarget" onclick="data('Switch')">
+                        <img src="img/link.png">
+                    </div>
+
+                    <div style="left:530px; top:170px;" class="ground zoomTarget"   onclick="data('Ground Station');" data-closeclick="true">
+                        <div class="level2 computer zoomTarget" data-closeclick="true" onclick="data('Computer')" id="cmp"><img src="img/computer.png"></div>	
+                        <div class="level2 radio zoomTarget" data-closeclick="true" onclick="data('XBee')"><img src="img/radio.png" ></div>	
+                    </div>
+
+                    <div style="left:545px;top:360px;" class="xbee-link"></div>
+
+                    <div style="left:445px; top:420px; " class="rc zoomTarget"   onclick="data('UAV');" data-closeclick="true">
+                        <div class="rc-tele level2 zoomTarget" data-closeclick="true" onclick="data('Tele')"><img src="img/tele.png" ></div>	
+                        <div class="rc-radio level2 zoomTarget" data-closeclick="true" onclick="data('XBee')"><img src="img/radio.png" ></div>	
+                        <div class="car level2" data-closeclick="true" id="car" onclick="data('Car');" ><img src="img/car.png"></div>	
+                            <div class="car-pix level2 car-in zoomTarget" data-closeclick="true" onclick="data('Pixhawk')"><img src="img/pix.png" ></div>	
+                            <div class="car-gps level2 car-in zoomTarget" data-closeclick="true" onclick="data('GPS')"><img src="img/gps.png" ></div>	
+                    </div>
+
+                    <div style="left:316px;top:540px;" class="tele-link"></div>
+
+                    <div style="left:100px; top:450px;" class="plan zoomTarget"   onclick="data('Ground Station');" data-closeclick="true">
+                        <div class="planComputer level2 zoomTarget" data-closeclick="true" onclick="data('Computer')" id="cmp"><img src="img/laptop.png"></div>	
+                        <div class="planRadio level2 zoomTarget" data-closeclick="true" onclick="data('Tele')"><img src="img/tele.png" ></div>	
+                    </div>
+
+
+
+
+
+                    <!--RPIs: Row 1 -->
+                    <div style="left:53px;top:36px;" class="cable"></div>
+                    <div style="left:453px;top:36px;" class="cable downC"></div>
+
+                    <div style="left:90px; top:30px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:170px; top:30px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:240px; top:30px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:310px; top:30px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <!--Row 2 -->
+                    <div style="left:53px;top:106px;width:520px" class="cable"></div>
+
+                    <div style="left:30px; top:100px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:100px; top:100px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:170px; top:100px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:240px; top:100px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:310px; top:100px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <!--Row 3 -->
+                    <div style="left:53px;top:176px;" class="cable"></div>
+
+                    <div style="left:30px; top:170px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:100px; top:170px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:170px; top:170px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:240px; top:170px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:310px; top:170px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <!--Row 4 -->
+                    <div style="left:53px;top:246px;" class="cable"></div>
+
+                    <div style="left:30px; top:240px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:100px; top:240px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:170px; top:240px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:240px; top:240px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+                    <div style="left:310px; top:240px; " class="rpi zoomTarget"   onclick="data('IPS Node')" data-closeclick="true">
+                        <div class="rpi-board zoomTarget" data-closeclick="true" onclick="data('Raspberry Pi')" ><img src="img/rpi.png"></div>	
+                        <div class="cat45 zoomTarget" data-closeclick="true" onclick="data('Cat5 Cable')"><img src="img/cat45.png" ></div>	
+                        <div class="rpi-cam zoomTarget" data-closeclick="true" onclick="data('RaspiCam')"><img src="img/cam.png" ></div>	
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <div id="navigation">
+                <div id="prev" class="zoomButton" data-type="prev" data-root=".zoomViewport">&lt;</div>
+                <div id="next" class="zoomButton" data-type="next" data-root=".zoomViewport">&gt;</div>
+            </div>
+            <div class="zoomDesc">
+                <h2 id="title">Title</h1>
+                <p id="desc">
+                    Desc...
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
