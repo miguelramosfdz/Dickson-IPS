@@ -19,4 +19,4 @@ View IPS-Node software in action (without IPS-Server running):
 Using the IPS with MissionPlanner:
 ![Map](/images/map.png?raw=true “Map”)
 
-![Map](/images/map.png?raw=true “Map”)
+![Map](/images/hardware.png?raw=true “Map”)
