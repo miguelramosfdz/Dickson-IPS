@@ -6,9 +6,5 @@ The source code running on each node in Dickson College's Indoor Positioning Sys
 Current dependencies:
 	1. OpenCV
 	2. Python-2.7
-	
-The principle file of the program is colourRec.py .
 
-colourValues.py defines colour ranges.
-
-To find out more about the project, go to www.andrewmoss.net.au .
+For more information on the project and on the software running on the IPS Nodes, go to the repository [noahingham/IPS-Server](https://github.com/noahingham/IPS-Server).
