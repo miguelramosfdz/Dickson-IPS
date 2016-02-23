@@ -12,7 +12,7 @@ View IPS-Node software in action (without IPS-Server running):
 
 
 The on-ground hardware involved (including an autonomous system):
-![Map](/images/hardware.png?raw=true “Map”)
+![Map](/IPS-Server/images/hardware.png?raw=true “Map”)
 
 My role in the project was as the lead software developer, working with the code running on the nodes and on the server. The roles of other students included setting up networking between RPis and the server, mounting the hardware and project management.
 
@@ -43,7 +43,7 @@ System
 After coming up with concepts and designs for each component of the project, a prototype has been setup in a classroom, using four nodes in series. The setup uses a small autonomous Rover controlled by a Pixhawk autopilot, a groud station running both the IPS-Server software and APM Mission Planner and the four Raspberry Pi’s running the IPS-Node software. The prototype has been used to succesfully control the autopilot, setting different Way-points around the classroom. After setting up the IPS, the only equipment required to use it is an autonomous vehicle and a ground station (image above).
 
 Using the IPS with MissionPlanner:
-![Map](/images/map.png?raw=true “Map”)
+![Map](/IPS-Server/images/map.png?raw=true “Map”)
 
 
 Next Step
